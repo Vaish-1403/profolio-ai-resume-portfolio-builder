@@ -1,0 +1,200 @@
+:root {
+  /* Color Tokens */
+  --bg-main: #F7F8FC;
+  --primary-indigo: #4F46E5;
+  --primary-indigo-hover: #4338CA;
+  --secondary-violet: #7C3AED;
+  --secondary-violet-hover: #6D28D9;
+  --accent-lavender: #A78BFA;
+  --dark-text: #171717;
+  --body-text: #374151;
+  --muted-text: #6B7280;
+  --light-border: rgba(229, 231, 235, 0.8);
+  --card-white: #FFFFFF;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+  --gradient-soft: linear-gradient(135deg, #EDE9FE 0%, #DBEAFE 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.75) 100%);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 20px -4px rgba(79, 70, 229, 0.08);
+  --shadow-lg: 0 20px 35px -10px rgba(79, 70, 229, 0.12);
+  --shadow-3d: 0 25px 50px -12px rgba(79, 70, 229, 0.16), 0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Poppins', var(--font-family);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Reset & Base Styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--dark-text);
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--dark-text);
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  outline: none;
+}
+
+button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid var(--primary-indigo);
+  outline-offset: 2px;
+}
+
+/* Utility Classes */
+.glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow-3d);
+  border-radius: var(--radius-lg);
+}
+
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Keyframe Animations */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(8px) rotate(-1deg);
+  }
+}
+
+@keyframes floatSubtle {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-6px) scale(1.01);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 7s ease-in-out infinite;
+}
+
+.animate-float-subtle {
+  animation: floatSubtle 5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Responsive Grid & Breakpoints */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 60px !important;
+  }
+  .workspace-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .floating-container {
+    height: 460px !important;
+    max-width: 480px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-headline {
+    font-size: 2.5rem !important;
+  }
+  .floating-container {
+    height: 400px !important;
+  }
+  .floating-hide-mobile {
+    display: none !important;
+  }
+  .floating-card-reposition-mobile {
+    transform: scale(0.9) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-headline {
+    font-size: 2rem !important;
+  }
+  .hero-subtext {
+    font-size: 0.98rem !important;
+  }
+}
